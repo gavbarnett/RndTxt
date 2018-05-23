@@ -10,7 +10,9 @@ function appendParagraphs(stdin){
     var text = document.createTextNode(stdin);
     newP.appendChild(text);
     choosenDiv.appendChild(newP, choosenDiv);
+    scrollToBottom("Story")
 }
+
 function appendChoice(choices){
     var choosenDiv = document.getElementById("Story");
     var newP = document.createElement('p');
@@ -32,13 +34,16 @@ function appendChoice(choices){
     for (ea in choices){
         addListeners(choices[ea]);
     }
+    scrollToBottom("Story")
 }
+
 function addListeners(watched_id){
     document.getElementById(watched_id).addEventListener("click", function (event){
         clickChoice(watched_id);
     });
         
 }
+
 function clickChoice(watched_id){
     event.preventDefault();
     //remove the question options
@@ -46,5 +51,10 @@ function clickChoice(watched_id){
     elem.parentNode.removeChild(elem);
     //reponse
     appendParagraphs("You head " + watched_id);
-
+    scrollToBottom("Story")
 }
+
+function scrollToBottom(id){
+    var div = document.getElementById(id);
+    div.scrollTop = div.scrollHeight - div.clientHeight;
+ }
