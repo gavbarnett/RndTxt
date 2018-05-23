@@ -1,6 +1,6 @@
 function main(){
     //wake-up the Author
-    mainAuthor()
+    thestory.nextline();
     //appendParagraphs('And so it begins... You face a choice in the road ahead, which way will your quest continue?');
     //appendChoice(["East", "West"])  
 }
@@ -51,8 +51,8 @@ function clickChoice(watched_id){
     var elem = document.getElementById('links');
     elem.parentNode.removeChild(elem);
     //reponse
-    appendParagraphs("You head " + watched_id);
-    scrollToBottom("Story")
+    scrollToBottom("Story");
+    thestory.nextline(watched_id)
 }
 
 function scrollToBottom(id){
