@@ -1,7 +1,8 @@
 function main(){
     //wake-up the Author
-    appendParagraphs('And so it begins... You face a choice in the road ahead, which way will your quest continue?');
-    appendChoice(["East", "West"])  
+    mainAuthor()
+    //appendParagraphs('And so it begins... You face a choice in the road ahead, which way will your quest continue?');
+    //appendChoice(["East", "West"])  
 }
 
 function appendParagraphs(stdin){
