@@ -1,16 +1,22 @@
 /*general fonts*/
-html, body, :any-link{
-  margin: 0;
-	padding: 10%;
+html, body{
+  padding: 5%;
   font-family: "Trebuchet MS", Helvetica, sans-serif;
   font-style: normal;
-  font-size: 150%;
+  font-size: 100%;
   text-align: justify;
   color:#ccc;
   background-color: #333;
 }
 
 a:any-link{
-  text-align: center; /*doesn't work*/
   font-weight: bold;
+  color:#ccc;
+}
+
+p {
+  font-size: 1em
+}
+.links {
+  text-align: center;
 }

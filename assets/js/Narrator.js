@@ -12,17 +12,23 @@ function appendParagraphs(stdin){
 }
 function appendChoice(choices){
     var choosenDiv = document.getElementById("Story");
-
-    choosenDiv.appendChild(document.createTextNode(" | "), choosenDiv);
+    var newP = document.createElement('p');
+    var newA = document.createElement('a');
+    var linkText = document.createTextNode('blank');
+    newP.className = 'links'
+    newP.appendChild(document.createTextNode(" | "), choosenDiv);
     for (ea in choices){
-        var newA = document.createElement('a');
-        var linkText = document.createTextNode(choices[ea]);
+        newA = document.createElement('a');
+        linkText = document.createTextNode(choices[ea]);
         newA.appendChild(linkText);
         newA.id = choices[ea];
         newA.href = "";
-        choosenDiv.appendChild(newA, choosenDiv);
+        newP.appendChild(newA, choosenDiv);
+        newP.appendChild(document.createTextNode(" | "), choosenDiv);
+    }
+    choosenDiv.appendChild(newP, choosenDiv);
+    for (ea in choices){
         addListeners(choices[ea]);
-        choosenDiv.appendChild(document.createTextNode(" | "), choosenDiv);
     }
 }
 function addListeners(watched_id){
