@@ -32,7 +32,7 @@ function Story () {
             //begin the story. This is only run once
             appendParagraphs ("Whether you shall turn out to be the hero of your life, or whether that station will be held by anybody else, these pages must show."); //Thank you David Copperfield
             this.choices = ["Open your eyes"]
-            this.results = [{JC:1},{Bob:3}]
+            this.results = [{JC:-5},{Bob:3}]
             appendChoice (this.choices)
         } else {
             //continue the story. This is run every time except the first.
@@ -62,6 +62,8 @@ function World () {
     this.UpdateWorld = function(updates){
         if (updates.JC){
             this.JC_value += updates.JC
+            this.JC_value = this.JC_value % 12
+            this.JC_value = Math.max(0,this.JC_value)
         }
     }
 }
