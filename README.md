@@ -1,2 +1,2 @@
-# SimpleThings
-Link: https://gavbarnett.github.io/SimpleThings/
+# RndTxt
+Link: https://gavbarnett.github.io/RndTxt
