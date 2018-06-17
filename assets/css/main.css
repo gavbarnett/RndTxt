@@ -5,13 +5,13 @@ html, body{
   font-style: normal;
   font-size: 100%;
   text-align: justify;
-  color:#ccc;
-  background-color: #333;
+  color:#333;
+  background-color: #F5F5DC;
 }
 
 a:any-link{
   font-weight: bold;
-  color:#ccc;
+  color:#333;
 }
 
 p {

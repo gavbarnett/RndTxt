@@ -1,23 +1,4 @@
 /* 
-Concepts:
-
-Joseph Campbell's - Hero Journey
-    0. Ordinary World
-    1. Call to Adventure
-    2. Assistance
-    3. Departure
-    -------------
-    4. Trials
-    5. Approach
-    6. Crisis
-    7. Treasure
-    8. Result
-    -------------
-    9. Return
-    10. New life
-    11. Resolution
-    12 --> 0
-
 */
 var theworld = new World();
 var thestory = new Story();
@@ -52,7 +33,7 @@ function Story () {
 
 function World () {
     //model of the world
-    this.JC_value = -1 //Joseph Campbell value
+    this.JC_value = 0 //Joseph Campbell value
     this.location = "Forest"
     this.weather = "Sunny"
     var itemCount = 3;
@@ -61,7 +42,6 @@ function World () {
         this.items.push(randItem())
     } 
     this.money = Math.round(Math.random()*100)
-    var updatepush = []
     this.UpdateWorld = function(updates){
         if (updates.JC){
             this.JC_value += updates.JC
@@ -69,11 +49,46 @@ function World () {
             this.JC_value = Math.max(0,this.JC_value)
         }
     }
+    this.newpara = function(){
+        switch(this.JC_value){
+            // Joseph Campbell's - Hero Journey
+            case 0: //Ordinary World
+                break;
+            case 1: //Call to Adventure
+                break;
+            case 2: //Assistance
+                break;
+            case 3: //Departure
+                break;
+            case 4: //Trials
+                break;
+            case 5: //Approach
+                break;
+            case 6: //Crisis
+                break;
+            case 7: //Treasure
+                break;
+            case 8: //Result
+                break;
+            case 9: //Return
+                break;
+            case 10: //New life
+                break;
+            case 11: //Resolution
+                break;
+            case 12: //END
+                break;
+            default:
+                break;
+
+        } 
+    }
 }
 
 
 function randItem () {
     var itemArray = [];
+    //JSON array of items that can exist in the game
     itemArray = [{
         name: "bread",
         edible: true,
