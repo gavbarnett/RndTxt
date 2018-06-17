@@ -4,34 +4,25 @@ var theworld = new World();
 var thestory = new Story();
 
 function Story () {
-    this.choices = []
-    this.results = []
-    this.newpara = ""
-    this.decision = []
+    
     this.nextline = function (choiceref) {
         if (!choiceref) {
             //begin the story. This is only run once
-            this.newpara = "Whether you shall turn out to be the hero of your life, or whether that station will be held by anybody else, these pages must show." //Thank you David Copperfield
-            this.choices = ["Open your eyes", "Keep your eyes shut"]
-            this.results = [{JC:1},{JC:0}]
-            appendParagraphs (this.newpara)
-            appendChoice (this.choices)
+            theworld.UpdateWorld(theworld.decision)
         } else {
             //continue the story. This is run every time except the first.
-            this.decision = this.results[this.choices.indexOf(choiceref)]
-            //updateworld
-            theworld.UpdateWorld(this.decision)
-            //construct new paragraph
-            this.newpara = theworld.JC_value
-            this.choices = ["Open your eyes", "Keep your eyes shut"]
-            this.results = [{JC:1},{JC:0}]
-            appendParagraphs(this.newpara)
-            appendChoice (this.choices)  
+            theworld.decision = theworld.results[theworld.choices.indexOf(choiceref)]
+            theworld.UpdateWorld(theworld.decision)
         }
     }
 }
 
 function World () {
+    //
+    this.choices = []
+    this.results = []
+    this.newpara = ""
+    this.decision = []
     //model of the world
     this.JC_value = 0 //Joseph Campbell value
     this.location = "Forest"
@@ -48,13 +39,26 @@ function World () {
             this.JC_value = this.JC_value % 12
             this.JC_value = Math.max(0,this.JC_value)
         }
+        this.cntStory()
     }
-    this.newpara = function(){
+    this.cntStory = function(test){
         switch(this.JC_value){
             // Joseph Campbell's - Hero Journey
             case 0: //Ordinary World
+                this.newpara = "Whether you shall turn out to be the hero of your life, or whether that station will be held by anybody else, these pages must show."
+                this.choices = ["Open your eyes", "Keep your eyes shut"]
+                this.results = [{JC:1},{JC:0}]
+                appendParagraphs(this.newpara)
+                appendChoice (this.choices)  
                 break;
             case 1: //Call to Adventure
+                this.newpara = "Looking around you "
+                appendParagraphs(this.newpara)
+                this.newpara = "Call to adventure."
+                this.choices = ["Accept", "Reject"]
+                this.results = [{JC:1},{JC:0}]
+                appendParagraphs(this.newpara)
+                appendChoice (this.choices)  
                 break;
             case 2: //Assistance
                 break;
@@ -80,7 +84,6 @@ function World () {
                 break;
             default:
                 break;
-
         } 
     }
 }
